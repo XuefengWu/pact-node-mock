@@ -24,7 +24,7 @@ function get(method,path,body) {
 
 		//console.log(interactions[i]);		
 		var interaction = interactions[i];
-		console.log(interaction);		
+		//console.log(interaction);		
 		if(interaction.request.path.toString() === path) {		
 			var _body = interaction.request.body;	
 		
@@ -34,8 +34,8 @@ function get(method,path,body) {
 			requestBody = JSON.parse(body);
 		}				 
 
-		if(_body) console.log("_body:"+JSON.stringify(_body));	 	
-		if(requestBody) console.log("body:"+JSON.stringify(requestBody));
+		//if(_body) console.log("_body:"+JSON.stringify(_body));	 	
+		//if(requestBody) console.log("body:"+JSON.stringify(requestBody));
 
 			if((body && _body && JSON.stringify(_body) == JSON.stringify(requestBody)) 
 				|| (!requestBody && !_body)) {
