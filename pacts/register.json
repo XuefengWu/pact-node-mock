@@ -1,0 +1,45 @@
+{
+    "provider": {
+        "name": "Activate Service"
+    },
+    "consumer": {
+        "name": "Account App"
+    },
+    "interactions": [
+        {
+            "description": "Activate user with empty request body",
+            "request": {
+                "method": "post",
+                "path": "/users/activate"
+            },
+            "response": {
+                "status": 400,
+                "headers": {
+                    "Content-Type": "application/json; charset=UTF-8"
+                }
+            }
+        },
+        {
+            "description": "Activate user with validate request body",
+            "request": {
+                "method": "post",
+                "path": "/users/activate",
+                "headers": {
+                    "Accept": "application/json"
+                },
+                "body": {
+                    "activationToken": "activation-token"
+                }
+            },
+            "response": {
+                "status": 200,
+                "headers": {
+                    "Content-Type": "application/json; charset=UTF-8"
+                },
+                "body": {
+                    "status": "success"
+                }
+            }
+        }
+    ]
+}
