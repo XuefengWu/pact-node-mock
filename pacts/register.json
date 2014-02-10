@@ -44,7 +44,7 @@
         {
             "description": "Resi auto address service",
             "request": {
-                "method": "get",
+                "method": "GET",
                 "path": "/autocomplete/Vic"
             },
             "response": {
