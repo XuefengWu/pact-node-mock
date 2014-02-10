@@ -70,7 +70,16 @@ http.createServer(function(req, res) {
 
     });
 
-  } else {
+  } else if (req.method == 'GET') {
+    console.log("[200] " + req.method + " to " + req.url);
+    
+    var response = get(req.method, req.url, body)
+    
+    res.writeHead(response.status, "OK", response.headers);
+    res.end(JSON.stringify(response.body));
+
+  }
+  else {
     console.log("[405] " + req.method + " to " + req.url);
     res.writeHead(405, "Method not supported", {
       'Content-Type': 'text/html'
