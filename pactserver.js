@@ -102,6 +102,6 @@ http.createServer(function(req, res) {
   }
 
 
-}).listen(1337, '127.0.0.1');
+}).listen(process.env.npm_package_config_port, '127.0.0.1');
 
-console.log('Server running at http://127.0.0.1:1337/');
+console.log('Server running at http://127.0.0.1:'+process.env.npm_package_config_port);

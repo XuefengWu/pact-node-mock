@@ -1,0 +1,18 @@
+{ "name" : "pack", 
+ "version" : "0.0.1", 
+ "description" : "start a pact mock server from pact defined files", 
+ "author":{ 
+ 	"name" : "xuefeng",
+	"email" : "benewu@gmail.com",
+	"url" : "http://xuefengwu.github.io"
+	},
+ "files":["pactserver.js"],
+ "bin": "./pact",
+ "man" : [ "./man/pact.1" ],
+ "config" : { "port" : "1337" },
+ "repository" :
+  { "type" : "git"
+  , "url" : "https://github.com/XuefengWu/pact-node-mock.git"
+  },
+ "dependencies" :{ }
+}
