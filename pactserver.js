@@ -1,24 +1,55 @@
 var http = require('http');
-
-
   
 var interactions;
 
 var fs = require('fs');
-var file = __dirname + '/pacts/register.json';
 
-fs.readFile(file, 'utf8', function(err, json) {
-  if (err) {
-    console.log('Error: ' + err);
-    return;
-  }
+var yaml = require('js-yaml');
 
-  data = JSON.parse(json);
 
-  interactions = data.interactions;
+function findInteractionFile(dir) {  
+  fs.readdirSync(dir).forEach(function(file) {
+    var path = dir+"/"+ file;
+    if(file.indexOf(".json") > 0 || file.indexOf(".yaml") > 0 ) {
+      loadInteractions(path);
+    } else {      
+      if(fs.lstatSync(path).isDirectory()){
+        findInteractionFile(path);
+      }      
+    }
+  });
+};
 
-}); 
+function loadInteractions(file){
+  fs.readFile(file, 'utf8', function(err, json) {
+    if (err) {
+      console.log('Error: ' + err);
+      return;
+    }
 
+    if(json.indexOf("interactions") < 0 ) {
+      return;
+    }
+ 
+
+    var data = {};
+
+    if(file.indexOf(".yaml") >0 ) {
+      try {
+        data = yaml.safeLoad(json);
+        
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      data = JSON.parse(json);  
+    }
+    
+
+    interactions = data.interactions;
+
+  }); 
+};
 
 function get(method, path, body) {
  
@@ -47,6 +78,8 @@ function get(method, path, body) {
   }
 
 };
+
+findInteractionFile("./");
 
 http.createServer(function(req, res) {
 
@@ -102,6 +135,7 @@ http.createServer(function(req, res) {
   }
 
 
-}).listen(process.env.npm_package_config_port, '127.0.0.1');
+}).listen(1337, '127.0.0.1');
 
-console.log('Server running at http://127.0.0.1:'+process.env.npm_package_config_port);
+//process.env.npm_package_config_port
+console.log('Server running at http://127.0.0.1:1337');

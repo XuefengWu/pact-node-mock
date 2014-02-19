@@ -1,0 +1,17 @@
+provider:
+ name: Address Service
+
+consumer:
+ name: Address Client
+
+interactions:
+ - description: Resi auto address service
+   request:
+    method: GET
+    path: /autocomplete/test
+
+   response:
+    status: 200 
+    headers: 
+     Access-Control-Allow-Origin: \*
+    body: hello
