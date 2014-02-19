@@ -1,4 +1,4 @@
-{ "name" : "pactserver", 
+{ "name" : "pactmock", 
  "version" : "0.1.2", 
  "description" : "start a pact mock server from pact defined files", 
  "author":{ 
@@ -6,7 +6,7 @@
 	"email" : "benewu@gmail.com",
 	"url" : "http://xuefengwu.github.io"
 	},
- "files":["pactserver.js"],
+ "files":["server.js"],
  "config" : { "port" : "1337" },
  "repository" :
   { "type" : "git"
