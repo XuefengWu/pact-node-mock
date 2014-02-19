@@ -44,7 +44,7 @@ function loadInteractions(file){
     } else {
       data = JSON.parse(json);  
     }
-    
+    console.log("loaded:\t"+file);
 
     interactions = data.interactions;
 
